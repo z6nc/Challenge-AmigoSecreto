@@ -3,7 +3,7 @@
 let amigos = []
 const listaAmigos = document.getElementById("listaAmigos");
  const ResultadoGanador = document.getElementById("resultado");
- const buttonSortear = document.querySelector(".button-draw")
+ const buttonSortear = document.querySelector(".button-draw");
  let  li ; // variable para crear el elemento o etiqueta Li
 
 
@@ -11,6 +11,7 @@ const listaAmigos = document.getElementById("listaAmigos");
 function validarUser(amigoAdd) {
     if (amigoAdd.value == "") {
         alert ("Digite tu nombre");
+        return
     } else{
         amigos.push(amigoAdd.value);
         amigoAdd.value ="";
@@ -25,7 +26,7 @@ function crearLista(amigosArray ,listaAmigos ){  // espera dos parametros  de ul
     for(let i = 0 ;  i < amigosArray.length ; i++ ){
         li = document.createElement('li');
         li.textContent = amigos[i];
-        listaAmigos.appendChild(li)
+        listaAmigos.appendChild(li);
         
     }
 }
@@ -36,7 +37,7 @@ function reiniciar(){
     listaAmigos.innerHTML ="";  
     buttonSortear.disabled = false;
     ResultadoGanador.innerHTML = " ";
-    alert("Sorteo Reiniciado ")
+    alert("Sorteo Reiniciado ");
 }
 
 
@@ -45,7 +46,6 @@ function agregarAmigo() {
     const amigoAdd =  document.getElementById("amigo");
     validarUser(amigoAdd);  // mandamos de argumente el  nombre del usuario
     crearLista(amigos,listaAmigos); // mandamos dos argumetnos el arrat y el ul 
-    console.log(amigos)  
 
 }
 
@@ -55,7 +55,7 @@ function sortearAmigo(){
     // condicional para verificar si existe datos en el array
     // si no existe mas de 1 participante el sorteo no se realizara
     if (amigos.length <= 1) {
-       alert ("¡Necesitamos más participantes para el sorteo!")       
+       alert ("¡Necesitamos más participantes para el sorteo!");  
        return  
     }
     const indexAleatorio  = Math.floor(Math.random() * amigos.length);   // index aleatorio
